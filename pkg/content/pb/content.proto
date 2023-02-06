@@ -1,0 +1,57 @@
+syntax = "proto3";
+
+package content;
+
+option go_package = "./pkg/content/pb";
+
+service ContentService {
+    rpc CreateCampaign(CreateCampaignRequest) returns (CreateCampaignResponse) {}
+
+    rpc CreateCause(CreateCauseRequest) returns (CreateCauseResponse) {}
+    
+    rpc UploadCampaignPicture(UploadCampaignPictureRequest) returns (UploadCampaignPictureResponse) {}
+}
+
+// Campaign 
+
+message CreateCampaignRequest {
+    int64 vendor_id = 1;
+    string title = 2;
+    string description = 3;
+    int64 duration = 4;
+    //need timedate obj
+    string start_date = 5;
+}
+  
+message CreateCampaignResponse {
+    int64 status = 1;
+    string error = 2;
+    int64 id = 3;
+}
+
+// Cause  
+
+message CreateCauseRequest {
+    int64 vendor_id = 1;
+    string title = 2;
+    string description = 3;
+}
+  
+message CreateCauseResponse {
+    int64 status = 1;
+    string error = 2;
+    int64 id = 3;
+}
+
+
+// Campaign Pic  
+
+message UploadCampaignPictureRequest {
+    int64 campaign_id = 1;
+}
+  
+message UploadCampaignPictureResponse {
+    int64 status = 1;
+    string error = 2;
+    int64 id = 3;
+}

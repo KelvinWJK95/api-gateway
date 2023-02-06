@@ -1,0 +1,40 @@
+syntax = "proto3";
+
+package user;
+
+option go_package = "./pkg/user/pb";
+
+service UserService {
+    rpc CreateUserProfile(CreateUserProfileRequest) returns (CreateUserProfileResponse) {}
+    
+    rpc CreateVendorProfile(CreateVendorProfileRequest) returns (CreateVendorProfileResponse) {}
+}
+
+// User 
+
+message CreateUserProfileRequest {
+    string name = 1;
+    string email = 2;
+    string contact = 3;
+}
+  
+message CreateUserProfileResponse {
+    int64 status = 1;
+    string error = 2;
+    int64 id = 3;
+}
+
+// Vendor  
+
+message CreateVendorProfileRequest {
+    string name = 1;
+    string email = 2;
+    string contact = 3;
+    string description = 4;
+}
+  
+message CreateVendorProfileResponse {
+    int64 status = 1;
+    string error = 2;
+    int64 id = 3;
+}

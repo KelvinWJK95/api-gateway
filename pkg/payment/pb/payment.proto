@@ -1,0 +1,63 @@
+syntax = "proto3";
+
+package payment;
+
+option go_package = "./pkg/payment/pb";
+
+service PaymentService {
+    rpc CreatePledge(CreatePledgeRequest) returns (CreatePledgeResponse) {}
+
+    rpc CreateGiving(CreateGivingRequest) returns (CreateGivingResponse) {}
+    
+    rpc CreateTransaction(CreateTransactionRequest) returns (CreateTransactionResponse) {}
+}
+
+// Pledge 
+
+message CreatePledgeRequest {
+    int64 user_id = 1;
+    int64 vendor_id = 2;
+    float amount = 3;
+    //need timedate obj
+    string date = 4;
+}
+  
+message CreatePledgeResponse {
+    int64 status = 1;
+    string error = 2;
+    int64 id = 3;
+}
+
+// Giving  
+
+message CreateGivingRequest {
+    int64 user_id = 1;
+    int64 campaign_id = 2;
+    int64 transaction_id = 3;
+    //need timedate obj
+    string date = 4;
+}
+  
+message CreateGivingResponse {
+    int64 status = 1;
+    string error = 2;
+    int64 id = 3;
+}
+
+
+// Transaction  
+
+message CreateTransactionRequest {
+    int64 user_id = 1;
+    int64 vendor_id = 2;
+    float amount = 3;
+    int64 method = 4;
+    //need timedate obj
+    string date = 5;
+}
+  
+message CreateTransactionResponse {
+    int64 status = 1;
+    string error = 2;
+    int64 id = 3;
+}
