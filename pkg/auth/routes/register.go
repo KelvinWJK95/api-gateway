@@ -15,11 +15,14 @@ type RegisterRequestBody struct {
 }
 
 func Register(w http.ResponseWriter, r *http.Request, c pb.AuthServiceClient) {
-	//body := RegisterRequestBody{}
+	body := RegisterRequestBody{}
+
+	body.Email = r.FormValue("email")
+	body.Password = r.FormValue("password")
 
 	res, err := c.Register(context.Background(), &pb.RegisterRequest{
-		Email:    "a", //body.Email,
-		Password: "b", //body.Password,
+		Email:    body.Email,
+		Password: body.Password,
 	})
 
 	var code int
