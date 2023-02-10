@@ -9,15 +9,15 @@ import (
 	"net/http"
 )
 
-type RegisterRequestBody struct {
+type LoginRequestBody struct {
 	Email    string `json:"email"`
 	Password string `json:"password"`
 }
 
-func Register(w http.ResponseWriter, r *http.Request, c pb.AuthServiceClient) {
-	//body := RegisterRequestBody{}
+func Login(w http.ResponseWriter, r *http.Request, c pb.AuthServiceClient) {
+	//body := LoginRequestBody{}
 
-	res, err := c.Register(context.Background(), &pb.RegisterRequest{
+	res, err := c.Login(context.Background(), &pb.LoginRequest{
 		Email:    "a", //body.Email,
 		Password: "b", //body.Password,
 	})

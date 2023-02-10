@@ -14,7 +14,7 @@ func RegisterRoutes(mux *http.ServeMux) *ServiceClient {
 
 	mux.HandleFunc("/register", svc.Register)
 
-	// mux.HandleFunc("/login", svc.Login)
+	mux.HandleFunc("/login", svc.Login)
 
 	return svc
 }
@@ -23,6 +23,6 @@ func (svc *ServiceClient) Register(w http.ResponseWriter, r *http.Request) {
 	routes.Register(w, r, svc.Client)
 }
 
-// func (svc *ServiceClient) Login(w http.ResponseWriter, r *http.Request) {
-// 	routes.Login(r.Body, svc.Client)
-// }
+func (svc *ServiceClient) Login(w http.ResponseWriter, r *http.Request) {
+	routes.Login(w, r, svc.Client)
+}
