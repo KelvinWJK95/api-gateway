@@ -42,7 +42,9 @@ func Register(w http.ResponseWriter, r *http.Request, c pb.AuthServiceClient) {
 	//console output
 	fmt.Println("Response: ", str)
 
-	//response
+	//Allow CORS here By * or specific origin
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+	w.Header().Set("Access-Control-Allow-Headers", "Content-Type")
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(code)
 
